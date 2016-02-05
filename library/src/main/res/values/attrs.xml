@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MultiStateView">
+        <attr name="emptyView" format="reference"/>
+        <attr name="loadingView" format="reference"/>
+        <attr name="failView" format="reference"/>
+        <attr name="contentView" format="reference"/>
+        <attr name="initView" format="enum">
+            <enum name="content" value="10001"/>
+            <enum name="loading" value="10002"/>
+            <enum name="empty" value="10003"/>
+            <enum name="fail" value="10004"/>
+        </attr>
+        <attr name="preview" format="enum">
+            <enum name="content" value="10001"/>
+            <enum name="loading" value="10002"/>
+            <enum name="empty" value="10003"/>
+            <enum name="fail" value="10004"/>
+        </attr>
+    </declare-styleable>
+</resources>

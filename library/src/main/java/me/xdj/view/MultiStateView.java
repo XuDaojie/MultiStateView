@@ -90,6 +90,7 @@ public class MultiStateView extends FrameLayout {
         super.onAttachedToWindow();
         // 可以解决所有状态都显示出来的问题
         if (isInEditMode()) {
+            // 预览模式下
             setViewState(mPreviewState);
         } else {
             setViewState(mViewState);
@@ -153,6 +154,7 @@ public class MultiStateView extends FrameLayout {
     public void setViewState(int state) {
         switch (state) {
             case VIEW_STATE_CONTENT:
+                // 在预览时mContentView可能为null
                 if(mContentView != null) mContentView.setVisibility(VISIBLE);
                 mLoadingView.setVisibility(GONE);
                 mFailView.setVisibility(GONE);

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,17 @@ public class MultiStateFragment extends Fragment {
                 mMultiStateView.setViewState(MultiStateView.VIEW_STATE_FAIL);
             }
         }, 2000);
+        Log.d("xdj", "onCreateView:" + this);
         return view;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        Log.d("xdj", "setUserVisibleHint:" + isVisibleToUser + this);
+        if (isVisibleToUser) {
+
+        }
     }
 
     public static MultiStateFragment newInstance(int mode) {

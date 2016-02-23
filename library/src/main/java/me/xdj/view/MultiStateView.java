@@ -1,9 +1,7 @@
 package me.xdj.view;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,12 +38,7 @@ public class MultiStateView extends FrameLayout {
     }
 
     public MultiStateView(Context context, AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr, 0);
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public MultiStateView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+        super(context, attrs, defStyleAttr);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MultiStateView);
         int initView = typedArray.getInt(R.styleable.MultiStateView_initView, VIEW_STATE_LOADING);
@@ -149,7 +142,7 @@ public class MultiStateView extends FrameLayout {
 
     /**
      * 设视图状态
-     * @param state
+     * @param state 状态类型
      */
     public void setViewState(int state) {
         switch (state) {
@@ -190,8 +183,8 @@ public class MultiStateView extends FrameLayout {
 
     /**
      * 获取指定状态的View
-     * @param state
-     * @return
+     * @param state 状态类型
+     * @return 指定状态的View
      */
     public View getViewForState(int state) {
         switch (state) {
@@ -209,7 +202,7 @@ public class MultiStateView extends FrameLayout {
 
     /**
      * 获取当前状态的View
-     * @return
+     * @return 当前状态的View
      */
     public View getCurrentView() {
         return getViewForState(mViewState);
@@ -217,7 +210,7 @@ public class MultiStateView extends FrameLayout {
 
     /**
      * 获取当前状态
-     * @return
+     * @return 状态
      */
     public int getViewState() {
         return mViewState;

@@ -39,7 +39,9 @@ public class MultiStateView extends FrameLayout {
 
     public MultiStateView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
+        if (isInEditMode()) {
+            return; // TODO 暂时用于解决Android Studio 1.5中预览时报错
+        }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MultiStateView);
         int initView = typedArray.getInt(R.styleable.MultiStateView_initView, VIEW_STATE_LOADING);
         int rIdEmpty = typedArray.getResourceId(R.styleable.MultiStateView_emptyView, -1);

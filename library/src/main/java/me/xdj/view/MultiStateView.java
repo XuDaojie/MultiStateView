@@ -188,11 +188,19 @@ public class MultiStateView extends FrameLayout {
     }
 
     /**
+     * 获取当前状态
+     * @return 状态
+     */
+    public int getViewState() {
+        return mViewState;
+    }
+
+    /**
      * 获取指定状态的View
      * @param state 状态类型
      * @return 指定状态的View
      */
-    public View getViewForState(int state) {
+    public View getView(int state) {
         switch (state) {
             case VIEW_STATE_CONTENT:
                 return mContentView;
@@ -211,15 +219,7 @@ public class MultiStateView extends FrameLayout {
      * @return 当前状态的View
      */
     public View getCurrentView() {
-        return getViewForState(mViewState);
-    }
-
-    /**
-     * 获取当前状态
-     * @return 状态
-     */
-    public int getViewState() {
-        return mViewState;
+        return getView(mViewState);
     }
 
     /**

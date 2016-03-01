@@ -35,7 +35,7 @@ public class MultiStateFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_content_custom, container, false);
         }
         mMultiStateView = (MultiStateView) view.findViewById(R.id.multi_state_view);
-        mMultiStateView.getViewForState(MultiStateView.VIEW_STATE_FAIL).findViewById(R.id.retry)
+        mMultiStateView.getView(MultiStateView.VIEW_STATE_FAIL).findViewById(R.id.retry)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

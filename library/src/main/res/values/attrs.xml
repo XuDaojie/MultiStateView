@@ -5,13 +5,13 @@
         <attr name="msv_loadingView" format="reference"/>
         <attr name="msv_failView" format="reference"/>
         <attr name="msv_contentView" format="reference"/>
-        <attr name="msv_initView" format="enum">
+        <attr name="msv_viewState" format="enum">
             <enum name="content" value="10001"/>
             <enum name="loading" value="10002"/>
             <enum name="empty" value="10003"/>
             <enum name="fail" value="10004"/>
         </attr>
-        <attr name="msv_preview" format="enum">
+        <attr name="msv_previewState" format="enum">
             <enum name="content" value="10001"/>
             <enum name="loading" value="10002"/>
             <enum name="empty" value="10003"/>

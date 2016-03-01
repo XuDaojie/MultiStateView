@@ -44,12 +44,12 @@ public class MultiStateView extends FrameLayout {
             return; // TODO 暂时用于解决Android Studio 1.5中预览时报错
         }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MultiStateView);
-        int initView = typedArray.getInt(R.styleable.MultiStateView_msv_initView, VIEW_STATE_LOADING);
+        int initView = typedArray.getInt(R.styleable.MultiStateView_msv_viewState, VIEW_STATE_LOADING);
         int rIdEmpty = typedArray.getResourceId(R.styleable.MultiStateView_msv_emptyView, -1);
         int rIdLoading = typedArray.getResourceId(R.styleable.MultiStateView_msv_loadingView, -1);
         int rIdFail = typedArray.getResourceId(R.styleable.MultiStateView_msv_failView, -1);
 
-        mPreviewState = typedArray.getInt(R.styleable.MultiStateView_msv_preview, VIEW_STATE_CONTENT);
+        mPreviewState = typedArray.getInt(R.styleable.MultiStateView_msv_previewState, VIEW_STATE_CONTENT);
 
         LayoutInflater inflater = LayoutInflater.from(context);
 

@@ -9,8 +9,8 @@
     app:msv_emptyView="@layout/view_empty"
     app:msv_failView="@layout/view_fail"
     app:msv_loadingView="@layout/view_loading"
-    app:msv_initView="empty"
-    app:msv_preview="loading"
+    app:msv_viewState="empty"
+    app:msv_previewState="loading"
     tools:context="me.xdj.multistateview.MainActivity">
 
     <TextView

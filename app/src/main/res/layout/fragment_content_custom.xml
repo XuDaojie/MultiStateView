@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    app:emptyView="@layout/view_empty"
-    app:failView="@layout/view_fail"
-    app:loadingView="@layout/view_loading"
-    app:initView="empty"
-    app:preview="loading"
+    app:msv_emptyView="@layout/view_empty"
+    app:msv_failView="@layout/view_fail"
+    app:msv_loadingView="@layout/view_loading"
+    app:msv_initView="empty"
+    app:msv_preview="loading"
     tools:context="me.xdj.multistateview.MainActivity">
 
     <TextView

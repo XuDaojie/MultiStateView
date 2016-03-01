@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 
 /**
  * Created by xdj on 16/2/3.
+ * 多状态视图
  */
 public class MultiStateView extends FrameLayout {
 
@@ -43,29 +44,29 @@ public class MultiStateView extends FrameLayout {
             return; // TODO 暂时用于解决Android Studio 1.5中预览时报错
         }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MultiStateView);
-        int initView = typedArray.getInt(R.styleable.MultiStateView_initView, VIEW_STATE_LOADING);
-        int rIdEmpty = typedArray.getResourceId(R.styleable.MultiStateView_emptyView, -1);
-        int rIdLoading = typedArray.getResourceId(R.styleable.MultiStateView_loadingView, -1);
-        int rIdFail = typedArray.getResourceId(R.styleable.MultiStateView_failView, -1);
+        int initView = typedArray.getInt(R.styleable.MultiStateView_msv_initView, VIEW_STATE_LOADING);
+        int rIdEmpty = typedArray.getResourceId(R.styleable.MultiStateView_msv_emptyView, -1);
+        int rIdLoading = typedArray.getResourceId(R.styleable.MultiStateView_msv_loadingView, -1);
+        int rIdFail = typedArray.getResourceId(R.styleable.MultiStateView_msv_failView, -1);
 
-        mPreviewState = typedArray.getInt(R.styleable.MultiStateView_preview, VIEW_STATE_CONTENT);
+        mPreviewState = typedArray.getInt(R.styleable.MultiStateView_msv_preview, VIEW_STATE_CONTENT);
 
         LayoutInflater inflater = LayoutInflater.from(context);
 
         if (rIdEmpty != -1) {
             mEmptyView = inflater.inflate(rIdEmpty, this, false);
         } else {
-            mEmptyView = inflater.inflate(R.layout.view_state_empty, this, false);
+            mEmptyView = inflater.inflate(R.layout.msv_view_state_empty, this, false);
         }
         if (rIdFail != -1) {
             mFailView = inflater.inflate(rIdFail, this, false);
         } else {
-            mFailView = inflater.inflate(R.layout.view_state_fail, this, false);
+            mFailView = inflater.inflate(R.layout.msv_view_state_fail, this, false);
         }
         if (rIdLoading != -1) {
             mLoadingView = inflater.inflate(rIdLoading, this, false);
         } else {
-            mLoadingView = inflater.inflate(R.layout.view_state_loading, this, false);
+            mLoadingView = inflater.inflate(R.layout.msv_view_state_loading, this, false);
         }
         addView(mEmptyView, mEmptyView.getLayoutParams());
         addView(mFailView, mFailView.getLayoutParams());
@@ -147,6 +148,9 @@ public class MultiStateView extends FrameLayout {
      * @param state 状态类型
      */
     public void setViewState(int state) {
+        if (isInEditMode()) { // TODO 暂时用于解决Android Studio 中预览时报错
+            return;
+        }
         switch (state) {
             case VIEW_STATE_CONTENT:
                 // 在预览时mContentView可能为null

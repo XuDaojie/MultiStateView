@@ -1,4 +1,5 @@
-# # MultiStateView
+MultiStateView
+===
 用于切换不同View的各种状态.<br>
 基于[Kennyc1012/MultiStateView](https://github.com/Kennyc1012/MultiStateView)
 
@@ -8,11 +9,7 @@
 - Fail
 - Loading
 
-![screenshot](https://github.com/Kennyc1012/MultiStateView/blob/master/art/content.png)
-![screenshot](https://github.com/Kennyc1012/MultiStateView/blob/master/art/loading.png)
-![screenshot](https://github.com/Kennyc1012/MultiStateView/blob/master/art/empty.png)
-![screenshot](https://github.com/Kennyc1012/MultiStateView/blob/master/art/error.png)
-
+![screenshot](https://github.com/XuDaojie/MultiStateView/tree/master/art/MultiStateView.gif)
 
 # Using MultiStateView
 相比[Kennyc1012/MultiStateView](https://github.com/Kennyc1012/MultiStateView)增加`previewState`（类似tools）和各状态的默认**Layout**

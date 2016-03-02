@@ -16,12 +16,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ViewPager mPager;
     private TabLayout mTab;
+    private MultiStateFragment mCurrentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,12 @@ public class MainActivity extends AppCompatActivity
             public CharSequence getPageTitle(int position) {
                 return titles[position];
             }
+
+            @Override
+            public void setPrimaryItem(ViewGroup container, int position, Object object) {
+                mCurrentFragment = (MultiStateFragment) object;
+                super.setPrimaryItem(container, position, object);
+            }
         });
         mTab.setupWithViewPager(mPager);
 
@@ -60,6 +68,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                mCurrentFragment.refresh();
             }
         });
 
@@ -129,4 +138,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

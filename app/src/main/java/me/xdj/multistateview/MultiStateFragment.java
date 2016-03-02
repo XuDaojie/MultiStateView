@@ -43,9 +43,22 @@ public class MultiStateFragment extends Fragment {
                         mHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                mMultiStateView.setViewState(MultiStateView.VIEW_STATE_FAIL);
+                                mMultiStateView.setViewState(MultiStateView.VIEW_STATE_EMPTY);
                             }
-                        }, 2000);
+                        }, 1000);
+                    }
+                });
+        mMultiStateView.getView(MultiStateView.VIEW_STATE_EMPTY).findViewById(R.id.retry)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mMultiStateView.setViewState(MultiStateView.VIEW_STATE_LOADING);
+                        mHandler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                mMultiStateView.setViewState(MultiStateView.VIEW_STATE_CONTENT);
+                            }
+                        }, 1000);
                     }
                 });
         mHandler = new Handler();
@@ -54,7 +67,7 @@ public class MultiStateFragment extends Fragment {
             public void run() {
                 mMultiStateView.setViewState(MultiStateView.VIEW_STATE_FAIL);
             }
-        }, 2000);
+        }, 1000);
         Log.d("xdj", "onCreateView:" + this);
         return view;
     }
@@ -75,5 +88,15 @@ public class MultiStateFragment extends Fragment {
         fragment.setArguments(bundle);
 
         return fragment;
+    }
+
+    public void refresh() {
+        mMultiStateView.setViewState(MultiStateView.VIEW_STATE_LOADING);
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mMultiStateView.setViewState(MultiStateView.VIEW_STATE_FAIL);
+            }
+        }, 1000);
     }
 }

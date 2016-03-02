@@ -9,7 +9,7 @@ MultiStateView
 - Fail
 - Loading
 
-![screenshot](https://github.com/XuDaojie/MultiStateView/tree/master/art/MultiStateView.gif)
+![screenshot](https://github.com/XuDaojie/MultiStateView/blob/develop/art/MultiStateView.gif)
 
 # Using MultiStateView
 相比[Kennyc1012/MultiStateView](https://github.com/Kennyc1012/MultiStateView)增加`previewState`（类似tools）和各状态的默认**Layout**

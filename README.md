@@ -9,7 +9,7 @@ MultiStateView
 - Fail
 - Loading
 
-![screenshot](https://github.com/XuDaojie/MultiStateView/tree/master/art/MultiStateView.gif)
+![screenshot](https://github.com/XuDaojie/MultiStateView/blob/develop/art/MultiStateView.gif)
 
 # Using MultiStateView
 相比[Kennyc1012/MultiStateView](https://github.com/Kennyc1012/MultiStateView)增加`previewState`（类似tools）和各状态的默认**Layout**
@@ -40,12 +40,7 @@ MultiStateView
 <attr name="msv_previewState" format="enum"><!-- default:content -->
 ```
 
-msv_loadingView is the view to be used for the [LOADING ViewState](https://github.com/Kennyc1012/MultiStateView/blob/master/library/src/main/java/com/kennyc/view/MultiStateView.java#L34)<br>
-msv_emptyView is the view to be used for the [EMPTY ViewSate](https://github.com/Kennyc1012/MultiStateView/blob/master/library/src/main/java/com/kennyc/view/MultiStateView.java#L32)<br>
-msv_failView is the view to be used for the [ERROR ViewState](https://github.com/Kennyc1012/MultiStateView/blob/master/library/src/main/java/com/kennyc/view/MultiStateView.java#L30)<br>
-msv_viewState is the [ViewState](https://github.com/Kennyc1012/MultiStateView/blob/master/library/src/main/java/com/kennyc/view/MultiStateView.java#L38) for the MultiStateView<br>
-The [CONTENT ViewState](https://github.com/Kennyc1012/MultiStateView/blob/master/library/src/main/java/com/kennyc/view/MultiStateView.java#L28) is determined by whatever is inside of the tags via XML. <b>NOTE**</b> a Content view must be set for the view to function, this is by design. 
-
+主要方法
 ```java 
 public void setViewState(int state) // 设置视图状态
 public int getViewState()           // 获得当前状态

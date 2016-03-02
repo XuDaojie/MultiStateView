@@ -40,9 +40,9 @@ public class MultiStateView extends FrameLayout {
 
     public MultiStateView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        if (isInEditMode()) {
-            return; // TODO 暂时用于解决Android Studio 1.5中预览时报错
-        }
+//        if (isInEditMode()) {
+//            return; // TODO 暂时用于解决Android Studio 1.5中预览时报错
+//        }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MultiStateView);
         int initView = typedArray.getInt(R.styleable.MultiStateView_msv_viewState, VIEW_STATE_LOADING);
         int rIdEmpty = typedArray.getResourceId(R.styleable.MultiStateView_msv_emptyView, -1);
@@ -148,9 +148,9 @@ public class MultiStateView extends FrameLayout {
      * @param state 状态类型
      */
     public void setViewState(int state) {
-        if (isInEditMode()) { // TODO 暂时用于解决Android Studio 中预览时报错
-            return;
-        }
+//        if (isInEditMode()) { // TODO 暂时用于解决Android Studio 中预览时报错
+//            return;
+//        }
         switch (state) {
             case VIEW_STATE_CONTENT:
                 // 在预览时mContentView可能为null

@@ -1,5 +1,7 @@
 MultiStateView
-===
+==============
+[![](https://jitpack.io/v/XuDaojie/MultiStateView.svg)](https://jitpack.io/#XuDaojie/MultiStateView)
+
 用于切换不同View的各种状态.<br>
 基于[Kennyc1012/MultiStateView](https://github.com/Kennyc1012/MultiStateView)
 

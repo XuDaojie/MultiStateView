@@ -45,7 +45,7 @@ public class MultiStateFragment extends Fragment {
                             public void run() {
                                 mMultiStateView.setViewState(MultiStateView.VIEW_STATE_EMPTY);
                             }
-                        }, 1000);
+                        }, 2000);
                     }
                 });
         mMultiStateView.getView(MultiStateView.VIEW_STATE_EMPTY).findViewById(R.id.retry)
@@ -58,7 +58,7 @@ public class MultiStateFragment extends Fragment {
                             public void run() {
                                 mMultiStateView.setViewState(MultiStateView.VIEW_STATE_CONTENT);
                             }
-                        }, 1000);
+                        }, 2000);
                     }
                 });
         mHandler = new Handler();

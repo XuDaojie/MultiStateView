@@ -44,7 +44,7 @@ public class MultiStateView extends FrameLayout {
 //            return; // TODO 暂时用于解决Android Studio 1.5中预览时报错
 //        }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MultiStateView);
-        int initView = typedArray.getInt(R.styleable.MultiStateView_msv_viewState, VIEW_STATE_LOADING);
+        int initState = typedArray.getInt(R.styleable.MultiStateView_msv_viewState, VIEW_STATE_LOADING);
         int rIdEmpty = typedArray.getResourceId(R.styleable.MultiStateView_msv_emptyView, -1);
         int rIdLoading = typedArray.getResourceId(R.styleable.MultiStateView_msv_loadingView, -1);
         int rIdFail = typedArray.getResourceId(R.styleable.MultiStateView_msv_failView, -1);
@@ -73,7 +73,7 @@ public class MultiStateView extends FrameLayout {
         addView(mLoadingView, mLoadingView.getLayoutParams());
 
         typedArray.recycle();
-        mViewState = initView;
+        mViewState = initState;
 //        if (!isInEditMode()) {
 //            setViewState(initView);
 //        } else {
@@ -154,11 +154,18 @@ public class MultiStateView extends FrameLayout {
         switch (state) {
             case VIEW_STATE_CONTENT:
                 // 在预览时mContentView可能为null
-                if(mContentView != null) mContentView.setVisibility(VISIBLE);
-                mLoadingView.setVisibility(GONE);
-                mFailView.setVisibility(GONE);
-                mEmptyView.setVisibility(GONE);
-                mViewState = VIEW_STATE_CONTENT;
+                if(mContentView != null)
+                postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mContentView.setVisibility(VISIBLE);
+                        mLoadingView.setVisibility(GONE);
+                        mFailView.setVisibility(GONE);
+                        mEmptyView.setVisibility(GONE);
+                        mViewState = VIEW_STATE_CONTENT;
+                    }
+                }, 600);
+
                 break;
             case VIEW_STATE_LOADING:
                 if(mContentView != null) mContentView.setVisibility(GONE);

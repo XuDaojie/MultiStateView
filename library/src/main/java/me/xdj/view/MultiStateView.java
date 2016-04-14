@@ -153,43 +153,19 @@ public class MultiStateView extends FrameLayout {
 //        }
         switch (state) {
             case VIEW_STATE_CONTENT:
-                // 在预览时mContentView可能为null
-                if(mContentView != null)
-                postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mContentView.setVisibility(VISIBLE);
-                        mLoadingView.setVisibility(GONE);
-                        mFailView.setVisibility(GONE);
-                        mEmptyView.setVisibility(GONE);
-                        mViewState = VIEW_STATE_CONTENT;
-                    }
-                }, 600);
-
+                setViewStateDelay(state, 0);
                 break;
             case VIEW_STATE_LOADING:
-                if(mContentView != null) mContentView.setVisibility(GONE);
-                mLoadingView.setVisibility(VISIBLE);
-                mFailView.setVisibility(GONE);
-                mEmptyView.setVisibility(GONE);
-                mViewState = VIEW_STATE_LOADING;
+                setViewStateDelay(state, 0);
                 break;
             case VIEW_STATE_EMPTY:
-                if(mContentView != null) mContentView.setVisibility(GONE);
-                mLoadingView.setVisibility(GONE);
-                mFailView.setVisibility(GONE);
-                mEmptyView.setVisibility(VISIBLE);
-                mViewState = VIEW_STATE_EMPTY;
+                setViewStateDelay(state, 0);
                 break;
             case VIEW_STATE_FAIL:
-                if(mContentView != null) mContentView.setVisibility(GONE);
-                mLoadingView.setVisibility(GONE);
-                mFailView.setVisibility(VISIBLE);
-                mEmptyView.setVisibility(GONE);
-                mViewState = VIEW_STATE_FAIL;
+                setViewStateDelay(state, 0);
                 break;
             default:
-                setViewState(VIEW_STATE_CONTENT);
+                setViewStateDelay(state, 0);
                 break;
         }
     }
@@ -237,5 +213,53 @@ public class MultiStateView extends FrameLayout {
             return false;
         }
         return view != mLoadingView && view != mFailView && view != mEmptyView;
+    }
+
+    /**
+     * 延迟改变状态
+     * @param state 状态
+     * @param milli 延迟数
+     */
+    private void setViewStateDelay(final int state, long milli) {
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (state) {
+                    case VIEW_STATE_CONTENT:
+                        // 在预览时mContentView可能为null
+                        if(mContentView != null) mContentView.setVisibility(VISIBLE);
+                        mLoadingView.setVisibility(GONE);
+                        mFailView.setVisibility(GONE);
+                        mEmptyView.setVisibility(GONE);
+                        mViewState = VIEW_STATE_CONTENT;
+                        break;
+                    case VIEW_STATE_LOADING:
+                        if(mContentView != null) mContentView.setVisibility(GONE);
+                        mLoadingView.setVisibility(VISIBLE);
+                        mFailView.setVisibility(GONE);
+                        mEmptyView.setVisibility(GONE);
+                        mViewState = VIEW_STATE_LOADING;
+                        break;
+                    case VIEW_STATE_EMPTY:
+                        if(mContentView != null) mContentView.setVisibility(GONE);
+                        mLoadingView.setVisibility(GONE);
+                        mFailView.setVisibility(GONE);
+                        mEmptyView.setVisibility(VISIBLE);
+                        mViewState = VIEW_STATE_EMPTY;
+                        break;
+                    case VIEW_STATE_FAIL:
+                        if(mContentView != null) mContentView.setVisibility(GONE);
+                        mLoadingView.setVisibility(GONE);
+                        mFailView.setVisibility(VISIBLE);
+                        mEmptyView.setVisibility(GONE);
+                        mViewState = VIEW_STATE_FAIL;
+                        break;
+                    default:
+                        setViewState(VIEW_STATE_CONTENT);
+                        break;
+                }
+            }
+        }, milli);
+
     }
 }

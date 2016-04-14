@@ -220,7 +220,7 @@ public class MultiStateView extends FrameLayout {
      * @param state 状态
      * @param milli 延迟数
      */
-    private void setViewStateDelay(final int state, long milli) {
+    public void setViewStateDelay(final int state, long milli) {
         postDelayed(new Runnable() {
             @Override
             public void run() {

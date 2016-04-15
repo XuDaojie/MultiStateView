@@ -265,7 +265,7 @@ public class MultiStateView extends FrameLayout {
 
     /**
      * 设计内容View
-     * @param contentView
+     * @param contentView View
      */
     public void setContentView(View contentView) {
         mContentView = contentView;

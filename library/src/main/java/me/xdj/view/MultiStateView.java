@@ -3,6 +3,8 @@ package me.xdj.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import android.widget.FrameLayout;
  */
 public class MultiStateView extends FrameLayout {
 
+    private static final String TAG = MultiStateView.class.getSimpleName();
+
     public static final int VIEW_STATE_CONTENT = 10001;
     public static final int VIEW_STATE_LOADING = 10002;
     public static final int VIEW_STATE_EMPTY = 10003;
@@ -24,7 +28,9 @@ public class MultiStateView extends FrameLayout {
     private View mFailView;
     private View mLoadingView;
 
-    private int mViewState = VIEW_STATE_CONTENT;
+    private SparseArray<View> mStateViewArray;
+
+    private int mCurrentState = VIEW_STATE_CONTENT;
     /**
      * 预览时状态
      */
@@ -73,7 +79,7 @@ public class MultiStateView extends FrameLayout {
         addView(mLoadingView, mLoadingView.getLayoutParams());
 
         typedArray.recycle();
-        mViewState = initState;
+        mCurrentState = initState;
 //        if (!isInEditMode()) {
 //            setViewState(initView);
 //        } else {
@@ -89,7 +95,7 @@ public class MultiStateView extends FrameLayout {
             // 预览模式下
             setViewState(mPreviewState);
         } else {
-            setViewState(mViewState);
+            setViewState(mCurrentState);
         }
     }
 
@@ -97,7 +103,7 @@ public class MultiStateView extends FrameLayout {
     public void addView(View child) {
         if (isValidContentView(child)) {
             mContentView = child;
-            if (mViewState != VIEW_STATE_CONTENT) {
+            if (mCurrentState != VIEW_STATE_CONTENT) {
                 mContentView.setVisibility(GONE);
             }
         }
@@ -108,7 +114,7 @@ public class MultiStateView extends FrameLayout {
     public void addView(View child, int index) {
         if (isValidContentView(child)) {
             mContentView = child;
-            if (mViewState != VIEW_STATE_CONTENT) {
+            if (mCurrentState != VIEW_STATE_CONTENT) {
                 mContentView.setVisibility(GONE);
             }
         }
@@ -119,7 +125,7 @@ public class MultiStateView extends FrameLayout {
     public void addView(View child, int width, int height) {
         if (isValidContentView(child)) {
             mContentView = child;
-            if (mViewState != VIEW_STATE_CONTENT) {
+            if (mCurrentState != VIEW_STATE_CONTENT) {
                 mContentView.setVisibility(GONE);
             }
         }
@@ -130,7 +136,7 @@ public class MultiStateView extends FrameLayout {
     public void addView(View child, ViewGroup.LayoutParams params) {
         if (isValidContentView(child)) {
             mContentView = child;
-            if (mViewState != VIEW_STATE_CONTENT) {
+            if (mCurrentState != VIEW_STATE_CONTENT) {
                 mContentView.setVisibility(GONE);
             }
         }
@@ -175,7 +181,7 @@ public class MultiStateView extends FrameLayout {
      * @return 状态
      */
     public int getViewState() {
-        return mViewState;
+        return mCurrentState;
     }
 
     /**
@@ -202,7 +208,7 @@ public class MultiStateView extends FrameLayout {
      * @return 当前状态的View
      */
     public View getCurrentView() {
-        return getView(mViewState);
+        return getView(mCurrentState);
     }
 
     /**
@@ -231,31 +237,47 @@ public class MultiStateView extends FrameLayout {
                         mLoadingView.setVisibility(GONE);
                         mFailView.setVisibility(GONE);
                         mEmptyView.setVisibility(GONE);
-                        mViewState = VIEW_STATE_CONTENT;
+                        mCurrentState = VIEW_STATE_CONTENT;
                         break;
                     case VIEW_STATE_LOADING:
                         if(mContentView != null) mContentView.setVisibility(GONE);
                         mLoadingView.setVisibility(VISIBLE);
                         mFailView.setVisibility(GONE);
                         mEmptyView.setVisibility(GONE);
-                        mViewState = VIEW_STATE_LOADING;
+                        mCurrentState = VIEW_STATE_LOADING;
                         break;
                     case VIEW_STATE_EMPTY:
                         if(mContentView != null) mContentView.setVisibility(GONE);
                         mLoadingView.setVisibility(GONE);
                         mFailView.setVisibility(GONE);
                         mEmptyView.setVisibility(VISIBLE);
-                        mViewState = VIEW_STATE_EMPTY;
+                        mCurrentState = VIEW_STATE_EMPTY;
                         break;
                     case VIEW_STATE_FAIL:
                         if(mContentView != null) mContentView.setVisibility(GONE);
                         mLoadingView.setVisibility(GONE);
                         mFailView.setVisibility(VISIBLE);
                         mEmptyView.setVisibility(GONE);
-                        mViewState = VIEW_STATE_FAIL;
+                        mCurrentState = VIEW_STATE_FAIL;
                         break;
                     default:
-                        setViewState(VIEW_STATE_CONTENT);
+                        if (mStateViewArray == null) {
+                            setViewState(VIEW_STATE_CONTENT);
+                        } else {
+                            View view = mStateViewArray.get(state);
+                            if (view != null) {
+                                if (mContentView != null) mContentView.setVisibility(GONE);
+                                mLoadingView.setVisibility(GONE);
+                                mFailView.setVisibility(GONE);
+                                mEmptyView.setVisibility(GONE);
+                                mCurrentState = state;
+
+                                view.setVisibility(VISIBLE);
+                            } else {
+                                Log.d(TAG, "state not found");
+                            }
+
+                        }
                         break;
                 }
             }
@@ -264,10 +286,18 @@ public class MultiStateView extends FrameLayout {
     }
 
     /**
-     * 设计内容View
+     * 设置内容View
      * @param contentView View
      */
     public void setContentView(View contentView) {
         mContentView = contentView;
+    }
+
+    public void addViewForStatus(int status, int resLayoutID) {
+        View view = LayoutInflater.from(getContext()).inflate(resLayoutID, this, false);
+        if (mStateViewArray == null) mStateViewArray = new SparseArray<>();
+        mStateViewArray.put(status, view);
+        addView(view);
+        view.setVisibility(GONE);
     }
 }

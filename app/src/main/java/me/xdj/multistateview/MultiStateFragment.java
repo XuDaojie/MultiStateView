@@ -24,6 +24,8 @@ public class MultiStateFragment extends Fragment {
     private Handler mHandler;
     private MultiStateView mMultiStateView;
 
+    private int other_status = 1111;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,7 +36,10 @@ public class MultiStateFragment extends Fragment {
         } else {
             view = inflater.inflate(R.layout.fragment_content_custom, container, false);
         }
+
         mMultiStateView = (MultiStateView) view.findViewById(R.id.multi_state_view);
+        mMultiStateView.addViewForStatus(other_status, R.layout.view_other_status);
+
         mMultiStateView.getView(MultiStateView.VIEW_STATE_FAIL).findViewById(R.id.retry)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -57,6 +62,19 @@ public class MultiStateFragment extends Fragment {
                             @Override
                             public void run() {
                                 mMultiStateView.setViewState(MultiStateView.VIEW_STATE_CONTENT);
+                            }
+                        }, 2000);
+                    }
+                });
+        mMultiStateView.getView(MultiStateView.VIEW_STATE_CONTENT)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mMultiStateView.setViewState(MultiStateView.VIEW_STATE_LOADING);
+                        mHandler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                mMultiStateView.setViewState(other_status);
                             }
                         }, 2000);
                     }

@@ -15,10 +15,13 @@ import me.xdj.view.MultiStateView;
  * Created by xdj on 16/2/5.
  */
 public class MultiStateFragment extends Fragment {
+
+    private static final String TAG = MultiStateFragment.class.getSimpleName();
+
+    public static final int OTHER_STATUS = 1111;
+
     private Handler mHandler;
     private MultiStateView mMultiStateView;
-
-    private int other_status = 1111;
 
     @Nullable
     @Override
@@ -26,7 +29,7 @@ public class MultiStateFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_content, container, false);
 
         mMultiStateView = (MultiStateView) view.findViewById(R.id.multi_state_view);
-        mMultiStateView.addViewForStatus(other_status, R.layout.view_other_status);
+        mMultiStateView.addViewForStatus(OTHER_STATUS, R.layout.view_other_status);
 //        mMultiStateView.addViewForStatus(BaseMultiStateView.STATE_LOADING, R.layout.msv_view_state_loading);
 //        mMultiStateView.addViewForStatus(BaseMultiStateView.STATE_FAIL, R.layout.msv_view_state_fail);
 //        mMultiStateView.addViewForStatus(BaseMultiStateView.STATE_EMPTY, R.layout.msv_view_state_empty);
@@ -65,7 +68,7 @@ public class MultiStateFragment extends Fragment {
                         mHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                mMultiStateView.setViewState(other_status);
+                                mMultiStateView.setViewState(OTHER_STATUS);
                             }
                         }, 2000);
                     }
@@ -79,17 +82,8 @@ public class MultiStateFragment extends Fragment {
                 mMultiStateView.setViewState(MultiStateView.STATE_FAIL);
             }
         }, 2000);
-        Log.d("xdj", "onCreateView:" + this);
+        Log.d(TAG, "onCreateView:" + this);
         return view;
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        Log.d("xdj", "setUserVisibleHint:" + isVisibleToUser + this);
-        if (isVisibleToUser) {
-
-        }
     }
 
     public static MultiStateFragment newInstance() {

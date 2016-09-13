@@ -15,9 +15,6 @@ import me.xdj.view.MultiStateView;
  * Created by xdj on 16/2/5.
  */
 public class MultiStateFragment extends Fragment {
-    public static final int MODE_DEFAULT = 0;
-    public static final int MODE_CUSTOM = 1;
-
     private Handler mHandler;
     private MultiStateView mMultiStateView;
 

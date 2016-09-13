@@ -4,7 +4,7 @@ apply plugin: 'com.jfrog.bintray'
 
 // 这个version是区分library版本的，因此当我们需要更新library时记得修改这个version
 // 这个version影响后面的引用
-version = "1.0.7"
+version = "2.0.0"
 
 android {
     resourcePrefix "msv" // 这个随便填(只是在代码格式检查时用到)
@@ -16,7 +16,7 @@ android {
         minSdkVersion 8
         targetSdkVersion 23
         versionCode 8
-        versionName "1.0.7"
+        versionName "2.0.0"
     }
     buildTypes {
         release {

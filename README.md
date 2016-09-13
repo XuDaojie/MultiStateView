@@ -3,11 +3,10 @@ MultiStateView
 [![JitPack](https://jitpack.io/v/XuDaojie/MultiStateView.svg)](https://jitpack.io/#XuDaojie/MultiStateView)
 
 用于切换不同View的各种状态,默认包含`Content`,`Empty`,`Fail`,`Loading` 4个状态,并且支持添加状态
-基于[Kennyc1012/MultiStateView](https://github.com/Kennyc1012/MultiStateView)
 
 ![screenshot](https://github.com/XuDaojie/MultiStateView/blob/develop/art/MultiStateView.gif)
 
-# Using MultiStateView
+## Using MultiStateView
 ``` xml
 <me.xdj.view.SimpleMultiStateView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -51,20 +50,23 @@ public static final int STATE_FAIL = 10004;
 ```
 
 ### 代码
+具体代码可以看[MultiStateFragment](https://github.com/XuDaojie/MultiStateView/blob/develop/app/src/main/java/me/xdj/multistateview/MultiStateFragment.java)
 
-
-# Including in your project
+## Including in your project
 要将**MultiStateView**引入你的项目，需要修改你的**build.gradle**
 
-## Add repository 
+### Add repository 
 ``` groovy
 repositories {
     maven { url 'https://jitpack.io' }
 }
 ```
-## Add dependency
+### Add dependency
 ``` groovy
 dependencies {
     compile 'com.github.XuDaojie:MultiStateView:v2.0.0
 }
 ```
+
+## 喝水不忘挖井人
+[Kennyc1012/MultiStateView](https://github.com/Kennyc1012/MultiStateView)

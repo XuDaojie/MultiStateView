@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import me.xdj.view.MultiStateView;
+import me.xdj.view.BaseMultiStateView;
 
 /**
  * Created by xdj on 16/2/5.
@@ -22,7 +22,7 @@ public class MultiStateFragment extends Fragment {
 
     private int mMode;
     private Handler mHandler;
-    private MultiStateView mMultiStateView;
+    private BaseMultiStateView mMultiStateView;
 
     private int other_status = 1111;
 
@@ -37,40 +37,43 @@ public class MultiStateFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_content_custom, container, false);
         }
 
-        mMultiStateView = (MultiStateView) view.findViewById(R.id.multi_state_view);
+        mMultiStateView = (BaseMultiStateView) view.findViewById(R.id.multi_state_view);
         mMultiStateView.addViewForStatus(other_status, R.layout.view_other_status);
+        mMultiStateView.addViewForStatus(BaseMultiStateView.STATE_LOADING, R.layout.msv_view_state_loading);
+        mMultiStateView.addViewForStatus(BaseMultiStateView.STATE_FAIL, R.layout.msv_view_state_fail);
+        mMultiStateView.addViewForStatus(BaseMultiStateView.STATE_EMPTY, R.layout.msv_view_state_empty);
 
-        mMultiStateView.getView(MultiStateView.VIEW_STATE_FAIL).findViewById(R.id.retry)
+        mMultiStateView.getView(BaseMultiStateView.STATE_FAIL).findViewById(R.id.retry)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mMultiStateView.setViewState(MultiStateView.VIEW_STATE_LOADING);
+                        mMultiStateView.setViewState(BaseMultiStateView.STATE_LOADING);
                         mHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                mMultiStateView.setViewState(MultiStateView.VIEW_STATE_EMPTY);
+                                mMultiStateView.setViewState(BaseMultiStateView.STATE_EMPTY);
                             }
                         }, 2000);
                     }
                 });
-        mMultiStateView.getView(MultiStateView.VIEW_STATE_EMPTY).findViewById(R.id.retry)
+        mMultiStateView.getView(BaseMultiStateView.STATE_EMPTY).findViewById(R.id.retry)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mMultiStateView.setViewState(MultiStateView.VIEW_STATE_LOADING);
+                        mMultiStateView.setViewState(BaseMultiStateView.STATE_LOADING);
                         mHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                mMultiStateView.setViewState(MultiStateView.VIEW_STATE_CONTENT);
+                                mMultiStateView.setViewState(BaseMultiStateView.STATE_CONTENT);
                             }
                         }, 2000);
                     }
                 });
-        mMultiStateView.getView(MultiStateView.VIEW_STATE_CONTENT)
+        mMultiStateView.getView(BaseMultiStateView.STATE_CONTENT)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mMultiStateView.setViewState(MultiStateView.VIEW_STATE_LOADING);
+                        mMultiStateView.setViewState(BaseMultiStateView.STATE_LOADING);
                         mHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -79,13 +82,15 @@ public class MultiStateFragment extends Fragment {
                         }, 2000);
                     }
                 });
+
         mHandler = new Handler();
+        mMultiStateView.setViewState(BaseMultiStateView.STATE_LOADING);
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mMultiStateView.setViewState(MultiStateView.VIEW_STATE_FAIL);
+                mMultiStateView.setViewState(BaseMultiStateView.STATE_FAIL);
             }
-        }, 1000);
+        }, 2000);
         Log.d("xdj", "onCreateView:" + this);
         return view;
     }
@@ -109,11 +114,11 @@ public class MultiStateFragment extends Fragment {
     }
 
     public void refresh() {
-        mMultiStateView.setViewState(MultiStateView.VIEW_STATE_LOADING);
+        mMultiStateView.setViewState(BaseMultiStateView.STATE_LOADING);
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mMultiStateView.setViewState(MultiStateView.VIEW_STATE_FAIL);
+                mMultiStateView.setViewState(BaseMultiStateView.STATE_FAIL);
             }
         }, 1000);
     }

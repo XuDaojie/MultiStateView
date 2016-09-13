@@ -18,9 +18,6 @@ public class MultiStateFragment extends Fragment {
     public static final int MODE_DEFAULT = 0;
     public static final int MODE_CUSTOM = 1;
 
-    public static final String KEY_MODE = "mode";
-
-    private int mMode;
     private Handler mHandler;
     private MultiStateView mMultiStateView;
 
@@ -29,13 +26,7 @@ public class MultiStateFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mMode = getArguments().getInt(KEY_MODE);
-        View view;
-        if (mMode == MultiStateFragment.MODE_DEFAULT) {
-            view = inflater.inflate(R.layout.fragment_content, container, false);
-        } else {
-            view = inflater.inflate(R.layout.fragment_content_custom, container, false);
-        }
+        View view = inflater.inflate(R.layout.fragment_content, container, false);
 
         mMultiStateView = (MultiStateView) view.findViewById(R.id.multi_state_view);
         mMultiStateView.addViewForStatus(other_status, R.layout.view_other_status);
@@ -104,13 +95,8 @@ public class MultiStateFragment extends Fragment {
         }
     }
 
-    public static MultiStateFragment newInstance(int mode) {
-        MultiStateFragment fragment = new MultiStateFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(KEY_MODE, mode);
-        fragment.setArguments(bundle);
-
-        return fragment;
+    public static MultiStateFragment newInstance() {
+        return new MultiStateFragment();
     }
 
     public void refresh() {

@@ -11,11 +11,5 @@
             <enum name="empty" value="10003"/>
             <enum name="fail" value="10004"/>
         </attr>
-        <attr name="msv_previewState" format="enum">
-            <enum name="content" value="10001"/>
-            <enum name="loading" value="10002"/>
-            <enum name="empty" value="10003"/>
-            <enum name="fail" value="10004"/>
-        </attr>
     </declare-styleable>
 </resources>

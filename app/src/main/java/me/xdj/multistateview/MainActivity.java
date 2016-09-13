@@ -2,13 +2,8 @@ package me.xdj.multistateview;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,14 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ViewPager mPager;
-    private TabLayout mTab;
-    private MultiStateFragment mCurrentFragment;
+    private MultiStateFragment mContentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,50 +25,26 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mPager = (ViewPager) findViewById(R.id.pager);
-        mTab = (TabLayout) findViewById(R.id.tab);
-
-        mPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
-            String[] titles = new String[]{"Default", "Custom"};
-            @Override
-            public Fragment getItem(int position) {
-                if (position == 0) return MultiStateFragment.newInstance(MultiStateFragment.MODE_DEFAULT);
-
-                return MultiStateFragment.newInstance(MultiStateFragment.MODE_CUSTOM);
-            }
-
-            @Override
-            public int getCount() {
-                return titles.length;
-            }
-
-            @Override
-            public CharSequence getPageTitle(int position) {
-                return titles[position];
-            }
-
-            @Override
-            public void setPrimaryItem(ViewGroup container, int position, Object object) {
-                mCurrentFragment = (MultiStateFragment) object;
-                super.setPrimaryItem(container, position, object);
-            }
-        });
-        mTab.setupWithViewPager(mPager);
-
+        mContentFragment = (MultiStateFragment) getSupportFragmentManager().findFragmentById(R.id.content_frame);
+        if (mContentFragment == null) {
+            mContentFragment = MultiStateFragment.newInstance();
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
+                    mContentFragment, R.id.content_frame);
+        }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                mCurrentFragment.refresh();
+                mContentFragment.refresh();
             }
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);

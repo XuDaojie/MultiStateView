@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">Library</string>
-    <string name="view_empty">No Results Found</string>
-    <string name="view_fail">Whoops! Something went wrong</string>
-    <string name="retry">Retry</string>
 </resources>

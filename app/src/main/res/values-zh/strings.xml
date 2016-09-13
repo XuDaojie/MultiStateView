@@ -1,0 +1,6 @@
+<resources>
+    <string name="des_empty">暂未内容</string>
+    <string name="des_fail">哎呦! 好像遇到了些问题</string>
+    <string name="retry">重试</string>
+    <string name="des_unknown_state">未知状态</string>
+</resources>

@@ -5,4 +5,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="des_empty">No Results Found</string>
+    <string name="des_fail">Whoops! Something went wrong</string>
+    <string name="des_unknown_state">Unknown state</string>
+    <string name="retry">Retry</string>
 </resources>

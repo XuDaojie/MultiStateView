@@ -1,5 +1,0 @@
-<resources>
-    <string name="view_empty">暂未内容</string>
-    <string name="view_fail">哎呦! 好像遇到了些问题</string>
-    <string name="retry">重试</string>
-</resources>

@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:gravity="center">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/view_empty"/>
+        android:text="@string/des_fail" />
+
     <Button
         android:id="@+id/retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/retry" />
+        android:text="@string/retry"
+        style="?android:borderlessButtonStyle"/>
 
 </LinearLayout>

@@ -29,21 +29,21 @@ MultiStateView
 </me.xdj.view.SimpleMultiStateView>
 ```
 可以通过以下属性自定义可状态下的视图
-```xml
+``` xml
 <attr name="msv_loadingView" format="reference" />
 <attr name="msv_emptyView" format="reference" />
 <attr name="msv_failView" format="reference" />
 ```
 
 ### 主要方法
-```java 
+``` java 
 public void setViewState(int state) // 设置视图状态
 public int getViewState()           // 获得当前状态
 public View getView(int state)      // 获得指定状态的视图
 public void addViewForStatus(int status, int resLayoutID) // 增加状态
 ```
 ### 常量
-```
+``` java
 public static final int STATE_CONTENT = 10001;
 public static final int STATE_LOADING = 10002;
 public static final int STATE_EMPTY = 10003;
@@ -57,13 +57,13 @@ public static final int STATE_FAIL = 10004;
 要将**MultiStateView**引入你的项目，需要修改你的**build.gradle**
 
 ## Add repository 
-```groovy
+``` groovy
 repositories {
     maven { url 'https://jitpack.io' }
 }
 ```
 ## Add dependency
-```groovy
+``` groovy
 dependencies {
     compile 'com.github.XuDaojie:MultiStateView:v2.0.0
 }

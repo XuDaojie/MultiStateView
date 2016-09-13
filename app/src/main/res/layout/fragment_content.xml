@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<me.xdj.view.BaseMultiStateView xmlns:android="http://schemas.android.com/apk/res/android"
+<me.xdj.view.SimpleMultiStateView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:xdj="http://schemas.android.com/apk/res-auto"
     android:id="@+id/multi_state_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    xdj:msv_emptyView="@layout/msv_view_state_empty"
+    xdj:msv_failView="@layout/msv_view_state_fail"
+    xdj:msv_loadingView="@layout/msv_view_state_loading"
     tools:context="me.xdj.multistateview.MainActivity">
 
     <TextView
@@ -12,4 +16,4 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="MultiStateView" />
-</me.xdj.view.BaseMultiStateView>
+</me.xdj.view.SimpleMultiStateView>

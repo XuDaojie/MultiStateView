@@ -1,6 +1,6 @@
 MultiStateView
 ==============
-![JitPack](https://jitpack.io/v/XuDaojie/MultiStateView.svg)](https://jitpack.io/#XuDaojie/MultiStateView)
+[![JitPack](https://jitpack.io/v/XuDaojie/MultiStateView.svg)](https://jitpack.io/#XuDaojie/MultiStateView)
 
 用于切换不同View的各种状态,默认包含`Content`,`Empty`,`Fail`,`Loading` 4个状态,并且支持添加状态
 基于[Kennyc1012/MultiStateView](https://github.com/Kennyc1012/MultiStateView)

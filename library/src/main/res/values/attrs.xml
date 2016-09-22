@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <declare-styleable name="SimpleMultiStateView" tools:ignore="ResourceName">
+<resources>
+    <declare-styleable name="msv_SimpleMultiStateView">
         <attr name="msv_emptyView" format="reference"/>
         <attr name="msv_loadingView" format="reference"/>
         <attr name="msv_failView" format="reference"/>

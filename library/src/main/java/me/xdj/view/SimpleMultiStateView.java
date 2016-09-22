@@ -23,10 +23,10 @@ public class SimpleMultiStateView extends MultiStateView {
     public SimpleMultiStateView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SimpleMultiStateView);
-        int resIdEmpty = typedArray.getResourceId(R.styleable.SimpleMultiStateView_msv_emptyView, -1);
-        int resIdLoading = typedArray.getResourceId(R.styleable.SimpleMultiStateView_msv_loadingView, -1);
-        int resIdFail = typedArray.getResourceId(R.styleable.SimpleMultiStateView_msv_failView, -1);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.msv_SimpleMultiStateView);
+        int resIdEmpty = typedArray.getResourceId(R.styleable.msv_SimpleMultiStateView_msv_emptyView, -1);
+        int resIdLoading = typedArray.getResourceId(R.styleable.msv_SimpleMultiStateView_msv_loadingView, -1);
+        int resIdFail = typedArray.getResourceId(R.styleable.msv_SimpleMultiStateView_msv_failView, -1);
 
         if (resIdEmpty != -1) {
             addViewForStatus(MultiStateView.STATE_EMPTY, resIdEmpty);

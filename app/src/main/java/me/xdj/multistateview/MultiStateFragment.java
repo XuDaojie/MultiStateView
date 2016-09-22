@@ -18,6 +18,8 @@ public class MultiStateFragment extends Fragment {
 
     private static final String TAG = MultiStateFragment.class.getSimpleName();
 
+    private static final int DELAY_MILLIS = 2000;
+
     public static final int OTHER_STATUS = 1111;
 
     private Handler mHandler;
@@ -44,7 +46,7 @@ public class MultiStateFragment extends Fragment {
                             public void run() {
                                 mMultiStateView.setViewState(MultiStateView.STATE_EMPTY);
                             }
-                        }, 2000);
+                        }, DELAY_MILLIS);
                     }
                 });
         mMultiStateView.getView(MultiStateView.STATE_EMPTY).findViewById(R.id.retry)
@@ -57,7 +59,7 @@ public class MultiStateFragment extends Fragment {
                             public void run() {
                                 mMultiStateView.setViewState(MultiStateView.STATE_CONTENT);
                             }
-                        }, 2000);
+                        }, DELAY_MILLIS);
                     }
                 });
         mMultiStateView.getView(MultiStateView.STATE_CONTENT)
@@ -70,7 +72,7 @@ public class MultiStateFragment extends Fragment {
                             public void run() {
                                 mMultiStateView.setViewState(OTHER_STATUS);
                             }
-                        }, 2000);
+                        }, DELAY_MILLIS);
                     }
                 });
 
@@ -81,7 +83,7 @@ public class MultiStateFragment extends Fragment {
             public void run() {
                 mMultiStateView.setViewState(MultiStateView.STATE_FAIL);
             }
-        }, 2000);
+        }, DELAY_MILLIS);
         Log.d(TAG, "onCreateView:" + this);
         return view;
     }
@@ -97,6 +99,6 @@ public class MultiStateFragment extends Fragment {
             public void run() {
                 mMultiStateView.setViewState(MultiStateView.STATE_FAIL);
             }
-        }, 1000);
+        }, DELAY_MILLIS);
     }
 }

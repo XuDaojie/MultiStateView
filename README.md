@@ -69,12 +69,13 @@ repositories {
 ### Add dependency
 ``` groovy
 dependencies {
-    compile 'com.github.XuDaojie:MultiStateView:v2.1.0
+    compile 'com.github.XuDaojie:MultiStateView:v2.1.0'
 }
 ```
 
 ## 喝水不忘挖井人
 [Kennyc1012/MultiStateView](https://github.com/Kennyc1012/MultiStateView)
+[android.support.v4.widget.ContentLoadingProgressBar](https://android.googlesource.com/platform/frameworks/support/+/refs/heads/master/v4/java/android/support/v4/widget/ContentLoadingProgressBar.java)
 
 ## License
 Copyright XuDaojie

@@ -1,6 +1,6 @@
 MultiStateView
 ==============
-[![JitPack](https://jitpack.io/v/XuDaojie/MultiStateView.svg)](https://jitpack.io/#XuDaojie/MultiStateView)
+[![JitPack](https://jitpack.io/v/XuDaojie/MultiStateView.svg)](https://jitpack.io/#XuDaojie/MultiStateView) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MultiStateView-green.svg?style=true)](https://android-arsenal.com/details/1/4386)
 
 用于切换不同View的各种状态,默认包含`Content`,`Empty`,`Fail`,`Loading` 4个状态,并且支持添加其他状态
 
@@ -70,3 +70,18 @@ dependencies {
 
 ## 喝水不忘挖井人
 [Kennyc1012/MultiStateView](https://github.com/Kennyc1012/MultiStateView)
+
+## License
+Copyright XuDaojie
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

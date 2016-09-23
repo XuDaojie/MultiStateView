@@ -12,6 +12,21 @@ public class SimpleMultiStateView extends MultiStateView {
 
     private static final String TAG = SimpleMultiStateView.class.getSimpleName();
 
+    private static final int MIN_SHOW_TIME = 600; // ms
+    private static final int MIN_DELAY = 600; // ms
+
+    private int mTargetState = -1;
+    private long mLoadingStartTime = -1;
+
+    private final Runnable mLoadingHide = new Runnable() {
+        @Override
+        public void run() {
+            setViewState(mTargetState);
+            mLoadingStartTime = -1;
+            mTargetState = -1;
+        }
+    };
+
     public SimpleMultiStateView(Context context) {
         this(context, null);
     }
@@ -39,6 +54,35 @@ public class SimpleMultiStateView extends MultiStateView {
         }
 
         typedArray.recycle();
+    }
+
+//    @Override
+//    public void onAttachedToWindow() {
+//        super.onAttachedToWindow();
+//        removeCallbacks(mLoadingHide);
+//    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        removeCallbacks(mLoadingHide);
+    }
+
+    @Override
+    public void setViewState(int state) {
+        if (getViewState() == STATE_LOADING && state != STATE_LOADING) {
+            long diff = System.currentTimeMillis() - mLoadingStartTime;
+            if (diff < MIN_SHOW_TIME) {
+                mTargetState = state;
+                postDelayed(mLoadingHide, MIN_DELAY);
+            } else {
+                super.setViewState(state);
+            }
+            return;
+        } else if (state == STATE_LOADING) {
+            mLoadingStartTime = System.currentTimeMillis();
+        }
+        super.setViewState(state);
     }
 
 }

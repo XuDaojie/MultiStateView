@@ -2,7 +2,8 @@ MultiStateView
 ==============
 [![JitPack](https://jitpack.io/v/XuDaojie/MultiStateView.svg)](https://jitpack.io/#XuDaojie/MultiStateView) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MultiStateView-green.svg?style=true)](https://android-arsenal.com/details/1/4386)
 
-用于切换不同View的各种状态,默认包含`Content`,`Empty`,`Fail`,`Loading` 4个状态,并且支持添加其他状态
+用于切换不同View的各种状态,默认包含`Content`,`Empty`,`Fail`,`Loading` 4个状态,并且支持添加其他状态<br>
+并且处理了`Loading`显示时间很短立刻切换到其他状态时看起来好像`Loading`界面闪了一下
 
 ![screenshot](https://github.com/XuDaojie/MultiStateView/blob/develop/art/MultiStateView.gif)
 
@@ -36,11 +37,15 @@ MultiStateView
 
 ### 主要方法
 ``` java 
-public void setViewState(int state) // 设置视图状态
+public void setViewState(int state) // 设置视图状态 
 public int getViewState()           // 获得当前状态
 public View getView(int state)      // 获得指定状态的视图
 public void addViewForStatus(int status, int resLayoutID) // 增加状态
 ```
+
+> Tips
+> 当从`Loading`状态切换到其他状态时,如果`Loading`持续时间低于**600ms**则会延迟**600ms**切换
+
 ### 常量
 ``` java
 public static final int STATE_CONTENT = 10001;
@@ -64,7 +69,7 @@ repositories {
 ### Add dependency
 ``` groovy
 dependencies {
-    compile 'com.github.XuDaojie:MultiStateView:v2.0.1
+    compile 'com.github.XuDaojie:MultiStateView:v2.1.0
 }
 ```
 

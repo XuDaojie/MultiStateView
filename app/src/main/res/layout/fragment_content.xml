@@ -12,8 +12,9 @@
     tools:context="me.xdj.multistateview.MainActivity">
 
     <TextView
+        android:id="@+id/content_tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="MultiStateView" />
+        android:text="Content" />
 </me.xdj.view.SimpleMultiStateView>

@@ -2,8 +2,8 @@ package me.xdj.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.SparseArray;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +23,10 @@ public class MultiStateView extends FrameLayout {
     public static final int STATE_FAIL = 10004;
 
     private SparseArray<View> mStateViewArray = new SparseArray<>();
+    private SparseIntArray mLayoutIDArray = new SparseIntArray();
     private View mContentView;
     private int mCurrentState = STATE_CONTENT;
+    private OnInflateListener mOnInflateListener;
 
     public MultiStateView(Context context) {
         this(context, null);
@@ -76,13 +78,20 @@ public class MultiStateView extends FrameLayout {
     public void setViewState(int state) {
         if (state != mCurrentState) {
             View view = getView(state);
+            getCurrentView().setVisibility(GONE);
+            mCurrentState = state;
             if (view != null) {
-                getCurrentView().setVisibility(GONE);
                 view.setVisibility(VISIBLE);
-                mCurrentState = state;
             } else {
-                // TODO: 16/9/12 throw Exception
-                Log.e(TAG, "state not found");
+                int resLayoutID = mLayoutIDArray.get(state);
+                view = LayoutInflater.from(getContext()).inflate(resLayoutID, this, false);
+                mStateViewArray.put(state, view);
+                addView(view);
+                view.setVisibility(VISIBLE);
+
+                if (mOnInflateListener != null) {
+                    mOnInflateListener.onInflate(state, view);
+                }
             }
         }
     }
@@ -103,7 +112,11 @@ public class MultiStateView extends FrameLayout {
      * @return 指定状态的View
      */
     public View getView(int state) {
-        return mStateViewArray.get(state);
+        View view = mStateViewArray.get(state);
+        if (view == null) {
+            throw new NullPointerException("view is not inflate");
+        }
+        return view;
     }
 
     /**
@@ -116,10 +129,11 @@ public class MultiStateView extends FrameLayout {
     }
 
     public void addViewForStatus(int status, int resLayoutID) {
-        View view = LayoutInflater.from(getContext()).inflate(resLayoutID, this, false);
-        mStateViewArray.put(status, view);
-        addView(view);
-        view.setVisibility(GONE);
+        mLayoutIDArray.put(status, resLayoutID);
+    }
+
+    public void setOnInflateListener(OnInflateListener onInflateListener) {
+        mOnInflateListener = onInflateListener;
     }
 
     private boolean isValidContentView(View view) {
@@ -134,8 +148,6 @@ public class MultiStateView extends FrameLayout {
 
     /**
      * 检查当前view是否为content
-     *
-     * @param view
      */
     private void validContentView(View view) {
         if (isValidContentView(view)) {
@@ -144,5 +156,9 @@ public class MultiStateView extends FrameLayout {
         } else if (mCurrentState != STATE_CONTENT) {
             mContentView.setVisibility(GONE);
         }
+    }
+
+    public interface OnInflateListener {
+        void onInflate(int state, View view);
     }
 }

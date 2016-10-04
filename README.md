@@ -8,6 +8,7 @@ MultiStateView
 ![screenshot](https://github.com/XuDaojie/MultiStateView/blob/develop/art/MultiStateView.gif)
 
 ## Using MultiStateView
+### Layout
 ``` xml
 <me.xdj.view.SimpleMultiStateView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -28,6 +29,7 @@ MultiStateView
         android:text="Content" />
 </me.xdj.view.SimpleMultiStateView>
 ```
+
 可以通过以下属性自定义可状态下的视图
 ``` xml
 <attr name="msv_loadingView" format="reference" />
@@ -41,10 +43,12 @@ public void setViewState(int state) // 设置视图状态
 public int getViewState()           // 获得当前状态
 public View getView(int state)      // 获得指定状态的视图
 public void addViewForStatus(int status, int resLayoutID) // 增加状态
+public void setOnInflaterListener(OnInflateListener onInflateListener) // 各状态Layout inflate时触发(除了CONTENT)
 ```
 
 > Tips<br>
-> 当从`Loading`状态切换到其他状态时,如果`Loading`持续时间低于**600ms**则会延迟**600ms**切换
+> 1. 当从`Loading`状态切换到其他状态时,如果`Loading`持续时间低于**600ms**则会延迟**600ms**切换
+> 2. 除了`CONTENT`以外的状态**Layout**都是在首次调用`setViewState`后才会**inflate**,所以设置监听事件的话需要状态修改完成后设置,或者调用`setOnInflaterListener`进行设置
 
 ### 常量
 ``` java

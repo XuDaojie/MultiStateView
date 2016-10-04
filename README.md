@@ -43,7 +43,7 @@ public View getView(int state)      // 获得指定状态的视图
 public void addViewForStatus(int status, int resLayoutID) // 增加状态
 ```
 
-> Tips
+> Tips<br>
 > 当从`Loading`状态切换到其他状态时,如果`Loading`持续时间低于**600ms**则会延迟**600ms**切换
 
 ### 常量

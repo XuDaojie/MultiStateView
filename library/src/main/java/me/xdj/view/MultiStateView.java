@@ -112,11 +112,7 @@ public class MultiStateView extends FrameLayout {
      * @return 指定状态的View
      */
     public View getView(int state) {
-        View view = mStateViewArray.get(state);
-        if (view == null) {
-            throw new NullPointerException("view is not inflate");
-        }
-        return view;
+        return mStateViewArray.get(state);
     }
 
     /**

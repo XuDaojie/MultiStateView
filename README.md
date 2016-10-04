@@ -47,7 +47,7 @@ public void setOnInflaterListener(OnInflateListener onInflateListener) // 各状
 ```
 
 > Tips<br>
-> 1. 当从`Loading`状态切换到其他状态时,如果`Loading`持续时间低于**600ms**则会延迟**600ms**切换
+> 1. 当从`Loading`状态切换到其他状态时,如果`Loading`持续时间低于**600ms**则会延迟**600ms**切换<br>
 > 2. 除了`CONTENT`以外的状态**Layout**都是在首次调用`setViewState`后才会**inflate**,所以设置监听事件的话需要状态修改完成后设置,或者调用`setOnInflaterListener`进行设置
 
 ### 常量

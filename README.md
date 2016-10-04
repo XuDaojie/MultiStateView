@@ -2,6 +2,9 @@ MultiStateView
 ==============
 [![JitPack](https://jitpack.io/v/XuDaojie/MultiStateView.svg)](https://jitpack.io/#XuDaojie/MultiStateView) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MultiStateView-green.svg?style=true)](https://android-arsenal.com/details/1/4386)
 
+参考[Kennyc1012/MultiStateView](https://github.com/Kennyc1012/MultiStateView)这个这个写的,1.0版本只是在这个上面加了默认布局,以及修正了在设计器中无法预览的问题<br>
+2.0是自己写的,主要增加了自定义状态,当然,核心原理还是那样
+
 用于切换不同View的各种状态,默认包含`Content`,`Empty`,`Fail`,`Loading` 4个状态,并且支持添加其他状态<br>
 并且处理了`Loading`显示时间很短立刻切换到其他状态时看起来好像`Loading`界面闪了一下
 
@@ -73,7 +76,7 @@ repositories {
 ### Add dependency
 ``` groovy
 dependencies {
-    compile 'com.github.XuDaojie:MultiStateView:v2.2.0'
+    compile 'com.github.XuDaojie:MultiStateView:v2.2.1'
 }
 ```
 

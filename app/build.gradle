@@ -33,5 +33,5 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
 
 //    compile project(':library')
-    compile 'com.github.XuDaojie:MultiStateView:v2.2.0'
+    compile 'com.github.XuDaojie:MultiStateView:v2.2.1'
 }

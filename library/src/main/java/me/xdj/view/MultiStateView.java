@@ -121,6 +121,12 @@ public class MultiStateView extends FrameLayout {
      * @return 当前状态的View
      */
     public View getCurrentView() {
+        View view = getView(mCurrentState);
+        if (view == null && mCurrentState == STATE_CONTENT) {
+            throw new NullPointerException("content is null");
+        } else if (view == null) {
+            throw new NullPointerException("current state view is null, state = " + mCurrentState);
+        }
         return getView(mCurrentState);
     }
 

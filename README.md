@@ -39,6 +39,8 @@ MultiStateView
 <attr name="msv_emptyView" format="reference" />
 <attr name="msv_failView" format="reference" />
 ```
+> Tips<br>
+> 由于`MultiStateView`继承于`FrameLayout`,直接子布局只能有一个,其他的不显示.
 
 ### 主要方法
 ``` java 

@@ -6,7 +6,7 @@ MultiStateView
 2.0是自己写的,主要增加了自定义状态,当然,核心原理还是那样
 
 用于切换不同View的各种状态,默认包含`Content`,`Empty`,`Fail`,`Loading` 4个状态,并且支持添加其他状态<br>
-并且处理了`Loading`显示时间很短立刻切换到其他状态时看起来好像`Loading`界面闪了一下
+处理了`Loading`显示时间很短立刻切换到其他状态时看起来好像`Loading`界面闪了一下
 
 ![screenshot](https://github.com/XuDaojie/MultiStateView/blob/develop/art/MultiStateView.gif)
 

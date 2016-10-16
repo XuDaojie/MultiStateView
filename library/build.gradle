@@ -10,7 +10,7 @@ android {
     resourcePrefix "msv" // 这个随便填(只是在代码格式检查时用到)
 
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    buildToolsVersion "24.0.3"
 
     defaultConfig {
         minSdkVersion 8

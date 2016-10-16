@@ -1,6 +1,10 @@
 MultiStateView
 ==============
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE) [![JitPack](https://jitpack.io/v/XuDaojie/MultiStateView.svg)](https://jitpack.io/#XuDaojie/MultiStateView) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MultiStateView-green.svg?style=true)](https://android-arsenal.com/details/1/4386)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE) 
+[![API](https://img.shields.io/badge/API-8%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=8) 
+[![JitPack](https://jitpack.io/v/XuDaojie/MultiStateView.svg)](https://jitpack.io/#XuDaojie/MultiStateView) 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MultiStateView-green.svg?style=true)](https://android-arsenal.com/details/1/4386)
+[![Method and size](https://img.shields.io/badge/Methods and size-64 | 7 KB-e91e63.svg)](http://www.methodscount.com/?lib=com.github.XuDaojie%3AMultiStateView%3Av2.2.2)
 
 参考[Kennyc1012/MultiStateView](https://github.com/Kennyc1012/MultiStateView)这个这个写的,1.0版本只是在这个上面加了默认布局,以及修正了在设计器中无法预览的问题<br>
 2.0是自己写的,主要增加了自定义状态,当然,核心原理还是那样

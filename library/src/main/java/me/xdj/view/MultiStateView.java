@@ -139,13 +139,7 @@ public class MultiStateView extends FrameLayout {
     }
 
     private boolean isValidContentView(View view) {
-        if (mContentView == null) {
-            for (int i = 0; i < mStateViewArray.size(); i++) {
-                if (mStateViewArray.indexOfValue(view) != -1) return false;
-            }
-            return true;
-        }
-        return false;
+        return mContentView == null && mStateViewArray.indexOfValue(view) == -1;
     }
 
     /**

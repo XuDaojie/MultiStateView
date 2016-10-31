@@ -83,7 +83,7 @@ repositories {
 ### Add dependency
 ``` groovy
 dependencies {
-    compile 'com.github.XuDaojie:MultiStateView:v2.2.2'
+    compile 'com.github.XuDaojie:MultiStateView:v2.2.3'
 }
 ```
 

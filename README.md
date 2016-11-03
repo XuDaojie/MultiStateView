@@ -69,7 +69,7 @@ public static final int STATE_FAIL = 10004;
 ```
 
 ### 代码
-具体代码可以看[MultiStateFragment](https://github.com/XuDaojie/MultiStateView/blob/develop/app/src/main/java/me/xdj/multistateview/MultiStateFragment.java)
+具体代码可以看[MultiStateFragment](https://github.com/XuDaojie/MultiStateView/blob/master/app/src/main/java/me/xdj/multistateview/MultiStateFragment.java)
 
 ## Including in your project
 要将**MultiStateView**引入你的项目，需要修改你的**build.gradle**

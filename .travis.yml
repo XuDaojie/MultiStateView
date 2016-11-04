@@ -24,3 +24,8 @@ android:
     # if you need to run emulator(s) during your tests
 #    - sys-img-armeabi-v7a-android-22
 #    - sys-img-x86-android-17
+
+script:
+    - echo "Travis branch is $TRAVIS_BRANCH"
+    - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
+    - mvn clean install -P 'guice'
